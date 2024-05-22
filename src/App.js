@@ -1,6 +1,5 @@
 import Navbar from "./Navbar.js";
 import Home from "./Home.js";
-import Intro from "./Intro.js";
 
 function App() {
   return (

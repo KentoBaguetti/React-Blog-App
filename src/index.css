@@ -19,6 +19,7 @@
 
 .navbar .links {
   margin-left: auto;
+  transform: scale(1.25);
 }
 
 .navbar a {
@@ -36,4 +37,20 @@
   max-width: 90%;
   margin: 40px auto;
   padding: 20px;
+}
+
+.blog-preview {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.blog-preview:hover {
+  box-shadow: 1px 3px 3px darkslategrey;
+}
+
+.blog-preview h2 {
+  font-size: 20px;
+  color: purple;
+  margin-bottom: 8px;
 }
