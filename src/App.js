@@ -13,3 +13,5 @@ function App() {
 }
 
 export default App;
+
+// Starting the json-server: npx json-server --watch react-blog-app/data/db.json --port 8000
