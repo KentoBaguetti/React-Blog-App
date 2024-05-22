@@ -1,56 +1,47 @@
 import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
+import axios from "axios";
 
 const Home = () => {
-  const [blogs, setBlogs] = useState([
-    {
-      id: 1,
-      title: "First Title",
-      author: "Kentaro",
-      body: "This is the body of the first object.",
-    },
-    {
-      id: 2,
-      title: "Second Title",
-      author: "Hyogara",
-      body: "This is the body of the second object.",
-    },
-    {
-      id: 3,
-      title: "Third Title",
-      author: "Kentaro",
-      body: "This is the body of the third object.",
-    },
-    {
-      id: 4,
-      title: "Fourth Title",
-      author: "Chocochan",
-      body: "This is the body of the fourth object.",
-    },
-    {
-      id: 5,
-      title: "Fifth Title",
-      author: "Kentaro",
-      body: "This is the body of the fifth object.",
-    },
-  ]);
-
-  const [name, setName] = useState("Kentaro");
+  const [blogs, setBlogs] = useState(null);
 
   const handleDelete = (id) => {
     const newBlogs = blogs.filter((blog) => blog.id !== id);
     setBlogs(newBlogs);
   };
 
+  // useEffect(() => {
+  //   fetch("http://localhost:8000/blogs")
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    console.log("Use effect ran");
-  }, [name]);
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/blogs");
+        console.log(response.data);
+        setBlogs(response.data);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+    fetchBlogs();
+  }, []);
 
   return (
     <div className="home">
-      <BlogList blogs={blogs} title="All Blogs!" handleDelete={handleDelete} />
-      <button onClick={() => setName("Hyogara")}>change name</button>
-      <p>{name}</p>
+      {blogs && (
+        <BlogList
+          blogs={blogs}
+          title="All Blogs!"
+          handleDelete={handleDelete}
+        />
+      )}
     </div>
   );
 };
