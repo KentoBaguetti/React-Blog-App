@@ -46,7 +46,7 @@
 }
 
 .blog-preview:hover {
-  box-shadow: 1px 3px 3px darkslategrey;
+  box-shadow: 1px 3px 5px palevioletred;
 }
 
 .blog-preview h2 {
