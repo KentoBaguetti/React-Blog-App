@@ -2,6 +2,7 @@ import Navbar from "./Navbar.js";
 import Home from "./Home.js";
 import Create from "./Create.js";
 import BlogDetails from "./BlogDetails.js";
+import NotFound from "./NotFound.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/create" element={<Create />} />
             <Route path="/blogs/:id" element={<BlogDetails />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </div>
