@@ -1,14 +1,28 @@
 import { useState } from "react";
+import axios from "axios";
 
 const Create = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("");
+  const [isPending, setIsPending] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const blog = { title, author, body };
+
+    setIsPending(true);
+
+    axios.post("http://localhost:8000/blogs", blog).then(() => {
+      alert("New blog added");
+      setIsPending(false);
+    });
+  };
 
   return (
     <div className="create">
       <h2>Add a New Blog</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Blog title:</label>
         <input
           type="text"
@@ -33,7 +47,8 @@ const Create = () => {
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
         />
-        <button type="submit">Add Blog</button>
+        {!isPending && <button type="submit">Add Blog</button>}
+        {isPending && <button type="button">Loading...</button>}
       </form>
     </div>
   );
