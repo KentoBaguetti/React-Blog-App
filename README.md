@@ -1,7 +1,7 @@
 # Basic Blog App Built with React
 
-Download dependencies with "npm i"
+Download dependencies with ```bash npm i ```
 <br>
-Start the react app with "npm start"
+Start the react app with ```bash npm start ```
 <br>
-Start the json-server with "npx json-server --watch react-blog-app/data/db.json --port 8000"
+Start the json-server with ```bash npx json-server --watch react-blog-app/data/db.json --port 8000 ```
